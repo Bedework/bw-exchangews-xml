@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.bedework</groupId>
+		<artifactId>bedework-parent</artifactId>
+		<version>38-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>bw-exchangews-xml</artifactId>
+	<version>5.1.0-SNAPSHOT</version>
+	<name>Bedework: XML schemas for exchange</name>
+
+	<description>XML for exchange</description>
+	<url>https://github.com/Bedework/bw-exchange-xml</url>
+
+	<scm>
+		<connection>scm:git:git@github.com:Bedework/bw-exchange-xml</connection>
+		<developerConnection>scm:git:git@github.com:Bedework/bw-exchange-xml</developerConnection>
+		<url>https://github.com/Bedework/bw-exchange-xml</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<properties>
+		<sourceDir>${project.basedir}/src/main</sourceDir>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.xml.ws</groupId>
+			<artifactId>jaxws-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.jws</groupId>
+			<artifactId>javax.jws-api</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- compile xsd and wsdl -->
+			<plugin>
+				<groupId>com.helger.maven</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+						<configuration>
+							<bindingDirectory>${sourceDir}/wsdls/wsdlbindings</bindingDirectory>
+							<wsdlDirectory>${sourceDir}/wsdls</wsdlDirectory>
+							<wsdlFiles>
+								<wsdlFile>Services.wsdl</wsdlFile>
+							</wsdlFiles>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Add location of generated sources for java compile -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${project.build.directory}/generated-sources/wsimport</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
