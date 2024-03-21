@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.bedework</groupId>
 		<artifactId>bedework-parent</artifactId>
-		<version>38-SNAPSHOT</version>
+		<version>39</version>
 	</parent>
 
 	<artifactId>bw-exchangews-xml</artifactId>
@@ -15,9 +15,9 @@
 	<url>https://github.com/Bedework/bw-exchange-xml</url>
 
 	<scm>
-		<connection>scm:git:git@github.com:Bedework/bw-exchange-xml</connection>
-		<developerConnection>scm:git:git@github.com:Bedework/bw-exchange-xml</developerConnection>
-		<url>https://github.com/Bedework/bw-exchange-xml</url>
+		<connection>scm:git:git@github.com:Bedework/bw-exchangews-xml</connection>
+		<developerConnection>scm:git:git@github.com:Bedework/bw-exchangews-xml</developerConnection>
+		<url>https://github.com/Bedework/bw-exchangews-xml</url>
 		<tag>HEAD</tag>
 	</scm>
 
