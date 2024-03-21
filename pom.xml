@@ -8,7 +8,7 @@
 	</parent>
 
 	<artifactId>bw-exchangews-xml</artifactId>
-	<version>5.1.0</version>
+	<version>5.1.1-SNAPSHOT</version>
 	<name>Bedework: XML schemas for exchange</name>
 
 	<description>XML for exchange</description>
